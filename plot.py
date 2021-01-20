@@ -48,4 +48,4 @@ plugins.LocateControl(drawCircle=False,
 
 plugins.FloatImage('leyenda.png', bottom=2, left=2).add_to(folium_map)
 
-folium_map.save('mapa/index.html')
+folium_map.save('docs/index.html')
