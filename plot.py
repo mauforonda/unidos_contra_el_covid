@@ -20,7 +20,7 @@ def draw_points(serviciodf, title, tooltip_items, color, radius):
     for row in serviciodf.to_dict(orient='records'):
         folium.CircleMarker(location=[row['latitud'], row['longitud']],
                             stroke = True,
-                            fill_opacity = .5,
+                            fill_opacity = .8,
                             radius=radius,
                             weight=1,
                             color='#a3a3a3',
@@ -33,11 +33,11 @@ folium_map = folium.Map(location = [-16.4340009,-65.2686204],
                         attr = '<a href="https://www.openstreetmap.org/copyright">OSM</a>')
 
 df = pd.read_csv('data/establecimientos.csv')
-draw_points(df[df.atencion_covid.apply(lambda x: normalize_value(x)) == 'Si'], 'Establecimiento Con Atención Covid-19', [['Nombre', 'nombre_establecimiento'], ['Tipo', 'tipo'], ['Nivel', 'nivel'], ['Subsector', 'subsector'], ['Dependencia', 'dependencia'], ['Número', 'numero_contacto']], '#f57d6e', 7)
-draw_points(df[df.atencion_covid.apply(lambda x: normalize_value(x)) != 'Si'], 'Establecimiento Sin Atención Covid-19', [['Nombre', 'nombre_establecimiento'], ['Tipo', 'tipo'], ['Nivel', 'nivel'], ['Subsector', 'subsector'], ['Dependencia', 'dependencia'], ['Número', 'numero_contacto']], '#9f9493', 7)
-draw_points(pd.read_csv('data/farmacias.csv'), 'Farmacia', [['Nombre', 'nombre_farmacia'], ['Número', 'numero_contacto']], '#6aa2f2', 6)
-draw_points(pd.read_csv('data/laboratorios.csv'), 'Laboratorio', [['Nombre', 'nombre_laboratorio'], ['Subsector', 'subsector'], ['Número', 'numero_contacto'], ['Método de Prueba', 'metodo']], '#ad94df', 7)
-draw_points(pd.read_csv('data/medicina_tradicional.csv'), 'Medicina Tradicional', [['Nombre', 'nombre_proveedor'], ['Número', 'numero_contacto']], '#87c8be', 6)
+draw_points(df[df.atencion_covid.apply(lambda x: normalize_value(x)) == 'Si'], 'Establecimiento Con Atención Covid-19', [['Nombre', 'nombre_establecimiento'], ['Tipo', 'tipo'], ['Nivel', 'nivel'], ['Subsector', 'subsector'], ['Dependencia', 'dependencia'], ['Número', 'numero_contacto']], '#b4c468', 7)
+draw_points(df[df.atencion_covid.apply(lambda x: normalize_value(x)) != 'Si'], 'Establecimiento Sin Atención Covid-19', [['Nombre', 'nombre_establecimiento'], ['Tipo', 'tipo'], ['Nivel', 'nivel'], ['Subsector', 'subsector'], ['Dependencia', 'dependencia'], ['Número', 'numero_contacto']], '#c9d7bf', 7)
+draw_points(pd.read_csv('data/farmacias.csv'), 'Farmacia', [['Nombre', 'nombre_farmacia'], ['Número', 'numero_contacto']], '#b8a7ea', 6)
+draw_points(pd.read_csv('data/laboratorios.csv'), 'Laboratorio', [['Nombre', 'nombre_laboratorio'], ['Subsector', 'subsector'], ['Número', 'numero_contacto'], ['Método de Prueba', 'metodo']], '#b7e0dc', 7)
+draw_points(pd.read_csv('data/medicina_tradicional.csv'), 'Medicina Tradicional', [['Nombre', 'nombre_proveedor'], ['Número', 'numero_contacto']], '#d1a0bd', 6)
 
 plugins.LocateControl(drawCircle=False, 
                       drawMarker=False,
