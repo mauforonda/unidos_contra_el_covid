@@ -41,9 +41,11 @@ draw_points(pd.read_csv('data/medicina_tradicional.csv'), 'Medicina Tradicional'
 
 plugins.LocateControl(drawCircle=False, 
                       drawMarker=False,
+                      setView='once',
                       initialZoomLevel = 17,
                       strings = {
-                          'title': 'Ir a mi ubicación'
+                          'title': 'Ir a mi ubicación',
+                          'popup': "Estás a {distance} metros de este punto"
                       },).add_to(folium_map)
 
 plugins.FloatImage('leyenda.png', bottom=2, left=2).add_to(folium_map)
